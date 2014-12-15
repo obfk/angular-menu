@@ -5,10 +5,50 @@
 </head>
 <body  class="container">
 
+<h1>Angular Menu</h1>
+
+  <div class="row" ng-controller="MenuController">
+    <div class="col-md-12">
+
+      <h3>{{ menuItem.name }}</h3>
+
+      <div ng-repeat="modifier in menuItem.modifiers">
+        <div class="row">
+          
+          <div class="col-xs-2">
+            {{ modifier.name }}
+          </div>
+          
+          <div class="col-xs-2">
+            {{ modifier.quantity }} x ${{ modifier.price }}
+          </div>
+
+          <div class="col-xs-4 button-group">
+            <button ng-click="removeModifier()" class="btn btn-default">SUB</button>
+            <button ng-click="addModifier()" class="btn btn-default">ADD</button>
+          </div>
+        </div>
+
+        <br/>
+
+      </div>
+
+      <div class="row">
+        <div class="col-xs-2">
+          Total
+        </div>
+
+        <div class="col-xs-2 col-xs-offset-2">
+          ${{ total() }}
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.js"></script>
-  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/controllers/menu-controller.js"></script>
 
 </body>
 </html>
