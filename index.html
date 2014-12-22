@@ -12,6 +12,8 @@
 
       <h3>{{ menuItem.name }}</h3>
 
+      <h4>You have <span>{{ menuItem.credit | currency}}</span> of credit.</h4>
+
       <div ng-repeat="modifier in menuItem.modifiers">
         <div class="row">
           
@@ -20,7 +22,7 @@
           </div>
           
           <div class="col-xs-2">
-            {{ modifier.quantity }} x ${{ modifier.price }}
+            {{ modifier.quantity }} x {{ modifier.price | currency}}
           </div>
 
           <div class="col-xs-4 button-group">
@@ -39,7 +41,7 @@
         </div>
 
         <div class="col-xs-2 col-xs-offset-2">
-          ${{ total() }}
+          {{ total() | currency }}
         </div>
       </div>
 

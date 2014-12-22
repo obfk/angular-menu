@@ -37,25 +37,24 @@ myApp.controller('MenuController', ['$scope', function($scope) {
     this.modifier.quantity += 1;
   };
 
-  // FIXME: doing too much
   $scope.total = function() {
     var total = this.menuItem.modifiers.reduce(function(total, num) {
       return total + (num.price * num.quantity);
     }, 0.00);
 
-    total = total - $scope.menuItem.credit;
-
-    if (total < 0) {
-      total = 0;
-    }
-
-    return total.toFixed(2)
+    return this.nonNegative(this.totalMinusCredit(total));
 
   };
 
-  $scope.calculateModifiers = function() {
-    var total = this.menuItem.modifiers.reduce(function(total, num) {
-      return total + (num.price * num.quantity);
-    }, 0.00);
+  $scope.totalMinusCredit = function(total) {
+    return total - $scope.menuItem.credit
+  };
+
+  $scope.nonNegative = function(total) {
+    if (total < 0) {
+      return 0;
+    } else {
+      return total;
+    }
   };
 }]);
