@@ -4,7 +4,7 @@
 
     npm install connect
 
-    npm install server-static
+    npm install serve-static
 
     node server.js
     
